@@ -1,0 +1,17 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+      
+    <span>PAGE 1</span>
+
+    <p th:text="${info}">Pas d'info</p>
+
+    <form action="/add" method="POST">
+        <input name="item">
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <div th:replace="menu">Menu</div>
+
+</html>
