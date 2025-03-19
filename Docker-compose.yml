@@ -1,0 +1,15 @@
+services:
+  serveur:
+    image: alpine/java:22-jre
+    working_dir: /tmp
+    command: java -Dserver.port=9999 -jar /tmp/end-2-end-0.0.1-SNAPSHOT.jar
+    volumes:
+      - ${SRC_PATH}/target:/tmp
+  cypress:
+    image: cypress/included:14.1.0
+    working_dir: /e2e
+    command: "npm install ; npm run end-2-end"
+    environment:
+      - CYPRESS_BASE_APP_URL=http://serveur:9999
+    volumes:
+      - ${SRC_PATH}/src/test/cypress:/e2e
