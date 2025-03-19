@@ -19,6 +19,11 @@ pipeline{
             when {
                 branch "main"
             }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'src/test/cypress/result.xml, src/test/cypress/cypress/screenshots/**'
+                }
+            }
         }
  
         stage('Test'){
